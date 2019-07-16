@@ -1,0 +1,28 @@
+version: "3"
+services:
+    db:
+        image: postgres
+        container_name: db
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: test
+            POSTGRES_USER: test
+            POSTGRES_DB: colorfight
+    redis:
+        image: redis
+        container_name: redis
+        ports:
+            - "6379:6379"
+    web:
+        image: colorfight
+        container_name: color_fight
+        ports:
+            - "8000:8000"
+        environment:
+            DATABASE_URL: "postgresql+psycopg2://test:test@db:5432/colorfight"
+            REDIS_URL: "redis://redis:6379/0"
+        depends_on:
+            - redis
+            - db
+
