@@ -1,5 +1,5 @@
 //hostUrl = "http://localhost:8000/"
-hostUrl = "https://game.fallin.dev/"
+hostUrl = "https://g.fallin.dev/"
 CreateGame = function(soft) {
     var aiOnly = false;
     if ($('#ai_only').find(":selected").text() == 'Yes') {

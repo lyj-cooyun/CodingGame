@@ -4,7 +4,7 @@ import os
 import random
 import threading
 
-hostUrl   = 'https://game.fallin.dev/'
+hostUrl   = 'https://g.fallin.dev/'
 
 def CheckToken(token):
     headers = {'content-type': 'application/json'}

@@ -1,6 +1,15 @@
 # You need to import colorfight for all the APIs
 import colorfight
 import random
+from hashlib import md5
+from uuid import uuid1
+
+
+def gen_random_name():
+    m = md5()
+    m.update(str(uuid1()))
+    return m.hexdigest()[8:16]
+
 
 if __name__ == '__main__':
     # Instantiate a Game object.
@@ -11,7 +20,7 @@ if __name__ == '__main__':
     # stop your AI and continue from the last time you quit. 
     # If there's a token and the token is valid, JoinGame() will continue. If
     # not, you will join as a new player.
-    if g.JoinGame('MyAI'):
+    if g.JoinGame(gen_random_name()):
         # Put you logic in a while True loop so it will run forever until you 
         # manually stop the game
         while True:
