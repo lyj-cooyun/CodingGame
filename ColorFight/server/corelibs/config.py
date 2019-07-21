@@ -44,7 +44,7 @@ class GameConfig:
             "MULTIATTACK_ENABLE": True,
         }
         if game_mode == "release":
-            self.kw.udpate(ENERGY_ENABLE=False, BOOST_ENABLE=False,
+            self.kw.update(ENERGY_ENABLE=False, BOOST_ENABLE=False,
                            BLAST_ENABLE=False, MULTIATTACK_ENABLE=False)
 
 
