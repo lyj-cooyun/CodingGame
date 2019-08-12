@@ -33,3 +33,14 @@ def create_app():
 
 app = create_app()
 wsgi = app.wsgi_app
+
+
+@app.cli.command("create_table")
+def create_table():
+    db.create_all(app=app)
+
+
+if __name__ == "__main__":
+    # debug
+    app.config['DEBUG'] = True
+    app.run("0.0.0.0", port=8888)

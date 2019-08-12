@@ -15,7 +15,8 @@ services:
         ports:
             - "6379:6379"
     web:
-        image: colorfight
+        build: .
+        # image: colorfight
         container_name: color_fight
         ports:
             - "8000:8000"

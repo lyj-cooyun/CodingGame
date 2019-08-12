@@ -9,7 +9,10 @@ class ConfigBase:
         return os.getenv(item) or self.kw.get(item)
 
     def __setattr__(self, key, value):
-        raise ValueError("Configuration is READ ONLY in process!")
+        if os.getenv(key) is not None:
+            raise EnvironmentError("Environment Vars is setted!")
+        if self.kw.get(key) != value:
+            self.kw[key] = value
 
     def __init__(self):
         # load configurations from EVN
@@ -19,7 +22,7 @@ class ConfigBase:
                 self.kw[key] = v
 
 
-class ServerConfig:
+class ServerConfig(ConfigBase):
     def __init__(self):
         self.kw = {
             "DATABASE_URL": "postgresql+psycopg2://test:test@localhost:5432/colorfight",
@@ -33,7 +36,7 @@ class ServerConfig:
         }
 
 
-class GameConfig:
+class GameConfig(ConfigBase):
     def __init__(self, game_mode="full"):
         self.kw = {
             "BASE_ENABLE": True,
@@ -48,7 +51,7 @@ class GameConfig:
                            BLAST_ENABLE=False, MULTIATTACK_ENABLE=False)
 
 
-class EnergyShopConfig:
+class EnergyShopConfig(ConfigBase):
     def __init__(self):
         self.kw = {
             "BLAST_ATTACK": 30,
@@ -58,7 +61,7 @@ class EnergyShopConfig:
         }
 
 
-class GoldShopConfig:
+class GoldShopConfig(ConfigBase):
     def __init__(self):
         self.kw = {
             "MULTI_ATTACK": 40,

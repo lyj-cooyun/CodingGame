@@ -2,11 +2,12 @@
 from flask import Blueprint, request, redirect, render_template
 from models.info import InfoDb
 
-bp = Blueprint("index", __name__, url_prefix="/index.html")
+bp = Blueprint("index", __name__, url_prefix="")
 
 
-@bp.route('')
-@bp.route('index')
+@bp.route('/')
+@bp.route('/index')
+@bp.route('/index.html')
 def Index():
     if request.url.startswith('https://'):
         url = request.url.replace('https://', "http://", 1)
