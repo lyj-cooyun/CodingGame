@@ -1,5 +1,5 @@
-// hostUrl = "http://localhost:8000/"
-hostUrl = "https://g.fallin.dev/"
+hostUrl = "http://localhost:8888/"
+// hostUrl = "https://g.fallin.dev/"
 var gameStatus = {"cellSize":20, 'cells':[], 'info':[], 'selectId': -1, 'globalDirty': false}
 var once = {'once':0};
 var lastUpdate = 0;

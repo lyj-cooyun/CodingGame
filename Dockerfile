@@ -3,7 +3,7 @@ FROM python:2.7
 EXPOSE 8000
 RUN mkdir /app
 WORKDIR /app
-ADD ./ColorFight/requirements.txt /app
+ADD ./ColorFight/server/requirements.txt /app
 RUN pip install -r requirements.txt
 ADD ./ColorFight /app
 
